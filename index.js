@@ -16,7 +16,7 @@ const userForm = new mongoose.Schema({
   mySID: String,
 });
 // Create a Model object
-const Form = mongoose.model('Form', formSchema);
+const Form = mongoose.model('Form', userForm);
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + "/form.html")
