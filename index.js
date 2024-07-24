@@ -24,17 +24,18 @@ app.get('/', (req, res) => {
 
 app.post('/', async (req, res) => {
   // get the data from the form
-  const { mongoURI } = req.body;
-  const myName = "Buu Nguyen";
-  const mySID = "300343373"
+  const { mongoURI } = req.body.myuri;
   // connect to the database and log the connection
 try {
   await mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
   console.log('Connected to MongoDB');
 
   // add the data to the database
-  const newForm = new Form({ myName, mySID });
-  await newForm.save();
+  const user = new Form({
+    myName: "Buu Nguyen",
+    mySID: "300343373",
+  });
+  await user.save();
 
   res.send('<h1>Document Added</h1>');
 } catch (error) {
